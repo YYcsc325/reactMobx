@@ -4,9 +4,10 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
-import getRouter from './router/router';
+// import getRouter from './router/router';
+import Home from './pages/Home/Home'
 
-ReactDom.render(getRouter(), document.getElementById('root'));
+ReactDom.render(<Home/>, document.getElementById('root'));
 
 // 还需要在主要的js文件里写入下面这段代码
 if (module.hot) {

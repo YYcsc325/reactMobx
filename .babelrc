@@ -7,9 +7,14 @@
                 "modules": false 
             }
         ],
-        // "es2015",
+        "es2015",
         "react",
-		"babel-preset-stage-3",  // npm 使用这个插件来编译为了后面使用...state扩展运算符可以使用
-		// "transform-runtime"      // npm 辅助函数“搬”到一个单独的模块 babel-runtime 中，这样做能减小项目文件的大小
+		"babel-preset-stage-3",        // npm 使用这个插件来编译为了后面使用...state扩展运算符可以使用
+    ],
+    "plugins": [
+        "transform-decorators-legacy", // 配置mobx的 @ 装饰器的
+        "transform-runtime",           // npm 辅助函数“搬”到一个单独的模块 babel-runtime 中，这样做能减小项目文件的大小
+        "transform-class-properties",  // class Index {} 语法解析
+        ["import", {"libraryName": "antd","libraryDirectory": "es","style": "css" /*`style: true` 会加载 less 文件*/}]
     ]
 }
