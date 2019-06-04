@@ -9,7 +9,7 @@
         ],
         "es2015",
         "react",
-		"babel-preset-stage-3",        // npm 使用这个插件来编译为了后面使用...state扩展运算符可以使用
+		"stage-0",        // npm 使用这个插件来编译为了后面使用...state扩展运算符可以使用
     ],
     "plugins": [
         "transform-decorators-legacy", // 配置mobx的 @ 装饰器的

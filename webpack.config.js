@@ -47,7 +47,7 @@ module.exports = {
     module: {                              // 处理对应模块
         rules:[
             {
-                test: /\.less$/,           // 解析css
+                test: /\.css|less$/,           // 解析css | less
                 use: ExtractTextWebpackPlugin.extract({                    // 将css用link的方式引入就不再需要style-loader了
                     fallback: "style-loader",
                     use: ['css-loader','postcss-loader','less-loader'],    // 从右向左解析,postcss打包css前缀
@@ -65,18 +65,18 @@ module.exports = {
                 ]
                 //exclude:/node_modules/                                   // 排除node_module下的匹配js文件   还需在.babelrc中做预设处理
             },
-            {
-                test: /\.css$/,     
-                use: ExtractTextWebpackPlugin.extract({
-                    fallback: "style-loader",
-                    use: ['css-loader','postcss-loader'],
-                    publicPath: '../'                                      
-                }),
-                include: [                                                 
-                    path.resolve(__dirname,'./node_modules/antd'),
-                    path.resolve(__dirname,'./src')
-                ]
-            },
+            // {
+            //     test: /\.css$/,     
+            //     use: ExtractTextWebpackPlugin.extract({
+            //         fallback: "style-loader",
+            //         use: ['css-loader','postcss-loader'],
+            //         publicPath: '../'                                      
+            //     }),
+            //     include: [                                                 
+            //         path.resolve(__dirname,'./node_modules/antd'),
+            //         path.resolve(__dirname,'./src')
+            //     ]
+            // },
             {
                 test: /\.(png|gif|jpg|svg|gif)$/,
                 use: [
@@ -91,9 +91,9 @@ module.exports = {
                 ]
             },
             {
-                test:/\.js$/,                             // 打包js文件         
+                test:/\.js|jsx$/,                         // 打包js,jsx文件         
                 use: 'babel-loader',                      // babel-loader既可以做到代码转成ES5
-                include: /src/,                           // 只转化src目录下的js
+                // include: /src/,                           // 只转化src目录下的js
                 exclude: /node_modules/                   // 排除掉node_modules，优化打包速度
             },
             {
@@ -113,11 +113,11 @@ module.exports = {
     },
     resolve: {
         // 省略后缀
-        extensions: ['.js', '.jsx', '.json', '.css', '.less'],
+        extensions: ['.js', '.jsx', '.json','.css','.less'],
         // 别名
         alias: {
-          '@pages':path.join(__dirname,'src/pages'),
-          '@com':path.join(__dirname,'src/component'),
+          '@dep':path.join(__dirname,'src/deploy'),
+          '@con':path.join(__dirname,'src/container'),
           '@actions':path.join(__dirname,'src/redux/actions'),
           '@reducers':path.join(__dirname,'src/redux/reducers'),
         }
